@@ -1,0 +1,12 @@
+Aquarius=Vesimies ♒
+Pisces=Kalat ♓
+Aries=Oinas ♈
+Taurus=Härkä ♉
+Gemini=Kaksoset ♊
+Cancer=Rapu ♋
+Leo=Leijona ♌
+Virgo=Neitsyt ♍
+Libra=Vaaka ♎
+Scorpio=Skorpioni ♏
+Sagittarius=Jousimies ♐
+Capricorn=Kauris ♑
