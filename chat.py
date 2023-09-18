@@ -1,5 +1,5 @@
 import random
-async def message_generation(message):
+def message_generation(message):
     brooklyn_99_quotes = [
             'I\'m the human form of the 💯 emoji.',
             'Bingpot!',
@@ -14,4 +14,7 @@ async def message_generation(message):
     if 'beep boop' not in message.content.lower():
         # If not, respond with quote
         response = random.choice(brooklyn_99_quotes)
+        return response
+    else:
+        response = "beep boop"
         return response
