@@ -1,27 +1,32 @@
-# bot.py
+# Import the required modules
+import discord
 import os
 import random
-
-import discord
+from discord.ext import commands 
 from dotenv import load_dotenv
-
-load_dotenv()
-TOKEN = os.getenv('DCTOKEN')
-
-client = discord.Client(intents=discord.Intents.default())
-
-@client.event
+# Create a Discord client instance and set the command prefix
+intents = discord.Intents.all()
+client = discord.Client(intents=intents)
+bot = commands.Bot(command_prefix='!', intents=intents)
+# Set the confirmation message when the bot is ready
+@bot.event
 async def on_ready():
-    print(f'{client.user.name} has connected to Discord!')
+    print(f'Logged in as {bot.user.name}')
+# Set the commands for your bot
+@bot.command()
+async def greet(ctx):
+    response = 'Hello, I am your discord bot'
+    await ctx.send(response)
+@bot.command()
+async def list_command(ctx):
+    response = 'You can use the following commands: \n !greet \n !list_command \n !functions'
+    await ctx.send(response)
+@bot.command()
+async def functions(ctx):
+    response = 'I am a simple Discord chatbot! I will reply to your command!'
+    await ctx.send(response)
 
-@client.event
-async def on_member_join(member):
-    await member.create_dm()
-    await member.dm_channel.send(
-        f'Hi {member.name}, welcome to my Discord server!'
-    )
-
-@client.event
+@bot.event
 async def on_message(message):
     if message.author == client.user:
         return
@@ -39,4 +44,11 @@ async def on_message(message):
         response = random.choice(brooklyn_99_quotes)
         await message.channel.send(response)
 
-client.run(TOKEN)
+
+
+
+
+
+# Retrieve token from the .env file
+load_dotenv()
+bot.run(os.getenv('TOKEN'))
