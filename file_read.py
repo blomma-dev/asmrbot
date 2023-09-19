@@ -1,6 +1,5 @@
 
 import json
-import random
 import file_parse
 
 
@@ -19,9 +18,8 @@ def open_file(file_name):
                 #print("Week Status:", weekday_afternoon)
                 #print("Weekend Names:", night)
                 #print("Weekend Status:", weekend)
-                return random.choice(weekday_morning)
-
-            
+                return weekday_morning, weekday_afternoon, night, weekend
+      
     except FileNotFoundError:
         print(f"File '{file_name}' not found.")
     except Exception as e:
